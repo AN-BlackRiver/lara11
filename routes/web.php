@@ -24,3 +24,10 @@ Route::get('/jobs/{id}', function ($id)  {
 Route::get('/contact', function () {
     return view('contact');
 });
+
+
+Route::get('test', function () {
+    $job = Job::query()->first();
+
+    dd($job->tags);
+});
