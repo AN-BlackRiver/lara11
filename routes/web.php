@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Requests\Jobs\CreateRequest;
 use App\Models\Employer;
 use App\Models\Job;
 use Illuminate\Support\Facades\Route;
@@ -20,12 +21,11 @@ Route::get('jobs/create', function () {
     return view('jobs.create');
 });
 
-Route::post('jobs',function (){
-    Job::query()->create([
-        'title' => request('title'),
-        'salary' => request('salary'),
-        'employer_id' => Employer::all()->random()->id,
-    ]);
+Route::post('jobs',function (CreateRequest $request){
+    $data = $request->validated();
+    $data['employer_id'] = Employer::all()->random()->id;
+
+    Job::query()->create($data);
 
     return redirect('jobs');
 });
