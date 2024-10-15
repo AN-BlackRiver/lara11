@@ -3,7 +3,8 @@
         Edit job {{$job->title}}
     </x-slot:headding>
 
-    <form method="POST" action="/jobs">
+    <form method="POST" action="/jobs/{{$job->id}}">
+        @method('PATCH')
         @csrf
         <div class="space-y-12">
             <div class="border-b border-gray-900/10 pb-12">
@@ -12,7 +13,7 @@
                         <label for="title" class="block text-sm font-medium leading-2 text-gray-900">Title</label>
                         <div class="mt-2">
                             <div class="flex rounded-md shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-600 sm:max-w-md">
-                                <input value="{{old('title')}}" type="text" name="title" id="title"
+                                <input value="{{old('title')? old('title') : $job->title}}" type="text" name="title" id="title"
                                        autocomplete="title"
                                        class="block w-full rounded-md border-0 py-1.5 pl-3 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                                        placeholder="Title">
@@ -24,7 +25,7 @@
                         <label for="salary" class="block text-sm font-medium leading-6 text-gray-900">Salary</label>
                         <div class="mt-2">
                             <div class="flex rounded-md shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-600 sm:max-w-md">
-                                <input value="{{old('salary')}}" type="text" name="salary" id="salary"
+                                <input value="{{old('salary') ? old('salary'): $job->salary}}" type="text" name="salary" id="salary"
                                        autocomplete="salary"
                                        class="block w-full rounded-md border-0 py-1.5 pl-3 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                                        placeholder="Salary">

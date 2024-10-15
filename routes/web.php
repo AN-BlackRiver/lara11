@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Requests\Jobs\CreateRequest;
+use App\Http\Requests\Jobs\UpdateRequest;
 use App\Models\Employer;
 use App\Models\Job;
 use Illuminate\Support\Facades\Route;
@@ -43,6 +44,15 @@ Route::get('/jobs/{id}/edit', function ($id) {
 
 
     return view('jobs.edit', ['job' => $job]);
+});
+
+Route::patch('/jobs/{id}', function ($id, UpdateRequest $request) {
+    $job = Job::query()->find($id);
+
+    $job->update($request->validated());
+
+    return view('jobs.show', ['job' => $job]);
+
 });
 
 Route::get('/contact', function () {
