@@ -49,10 +49,18 @@ Route::get('/jobs/{id}/edit', function ($id) {
 Route::patch('/jobs/{id}', function ($id, UpdateRequest $request) {
     $job = Job::query()->find($id);
 
-    $job->update($request->validated());
+    $job->updateOrFail($request->validated());
 
     return view('jobs.show', ['job' => $job]);
 
+});
+
+Route::delete('/jobs/{id}', function ($id, Request $request) {
+    $job = Job::query()->find($id);
+
+    $job->deleteOrFail();
+
+    return redirect("/jobs");
 });
 
 Route::get('/contact', function () {

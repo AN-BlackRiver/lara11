@@ -9,7 +9,6 @@
 
     <p class="mt-5">
         <x-button href="/jobs/{{$job->id}}/edit">Edit Job</x-button>
-        <x-button>Delete</x-button>
     </p>
 
 </x-layout>
