@@ -3,7 +3,7 @@
         Log In
     </x-slot:headding>
 
-    <form method="POST" action="/register">
+    <form method="POST" action="/login">
         @csrf
         <div class="space-y-12">
             <div class="border-b border-gray-900/10 pb-12">
@@ -22,7 +22,7 @@
                                           autocomplete="email"
                                           required/>
 
-                            <x-form-error name="last_name"/>
+                            <x-form-error name="email"/>
 
                         </div>
                     </x-form-field>
@@ -45,8 +45,7 @@
                 </div>
             </div>
         </div>
-        <div class="mt-6 flex items-center justify-end gap-x-6">
-            <button type="button" class="text-sm font-semibold leading-6 text-gray-900">Cancel</button>
+        <div class="mt-6 flex items-center justify-start gap-x-6">
             <x-from-button>Log in</x-from-button>
         </div>
     </form>
