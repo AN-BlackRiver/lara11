@@ -6,6 +6,9 @@ use App\Http\Requests\Jobs\CreateRequest;
 use App\Http\Requests\Jobs\UpdateRequest;
 use App\Models\Employer;
 use App\Models\Job;
+use App\Models\User;
+use Auth;
+use Gate;
 use Illuminate\Http\Request;
 
 class JobController extends Controller

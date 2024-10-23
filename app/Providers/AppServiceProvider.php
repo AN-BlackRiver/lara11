@@ -2,6 +2,9 @@
 
 namespace App\Providers;
 
+use App\Models\Job;
+use App\Models\User;
+use Gate;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Pagination\Paginator;
 use Illuminate\Support\ServiceProvider;
