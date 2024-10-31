@@ -4,12 +4,12 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\Jobs\CreateRequest;
 use App\Http\Requests\Jobs\UpdateRequest;
+use App\Mail\JobPosted;
 use App\Models\Employer;
 use App\Models\Job;
-use App\Models\User;
 use Auth;
-use Gate;
 use Illuminate\Http\Request;
+use Mail;
 
 class JobController extends Controller
 {
@@ -36,7 +36,9 @@ class JobController extends Controller
 
         $data['employer_id'] = Employer::all()->random()->id;
 
-        Job::query()->create($data);
+        $job  = Job::query()->create($data);
+
+        Mail::to(Auth::user()->email)->send(new JobPosted($job));
 
         return redirect('jobs');
     }
