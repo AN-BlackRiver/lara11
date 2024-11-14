@@ -34,7 +34,7 @@ class JobController extends Controller
     {
         $data = $request->validated();
 
-        $data['employer_id'] = Employer::all()->random()->id;
+        $data['employer_id'] = 21;
 
         $job  = Job::query()->create($data);
 

@@ -1,7 +1,2 @@
-<h1>{{$job->title}}</h1>
-
-<p>Congrats You job is now live in our site !</p>
-
-<p>
-    <a href="{{url('/jobs/' . $job->id)}}">YOUR JOB VACATION</a>
-</p>
+<h1>Dear {{$job->employer->user->first_name}} your a posted new Job</h1>
+<p>{{$job->name}}</p>
